@@ -60,7 +60,7 @@ sh setup.sh
 *(If no setup script exists, run the Docker container or use your preferred method to serve static files.)*
 
 ### Step 5: Usage
-Open your browser and go to `http://localhost:80`.
+Open your browser and go to `http://localhost:6969` or `http://localhost:80`.
 Interact with the web player’s UI to play your content.
 
 ### Step 6: Enjoy the website!
@@ -79,6 +79,7 @@ For questions, issues, or feature requests:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 
 
 
