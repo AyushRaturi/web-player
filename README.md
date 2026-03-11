@@ -16,7 +16,7 @@ The Static Web-player is a lightweight, easy-to-use web application designed for
 The Static Web-player is designed to be easy to use, understand, and provides a friendly UI. It allows users to play web-based content seamlessly with a simple setup process.
 
 ## ⚙️ Automated Setup Steps
-### Method 1 — Automated Deployment (Recommended)
+### Method 1 — Automated Deployment (Only For linux user)
 This method uses the automation script (cmd.sh) to install dependencies, configure Docker, and deploy the application automatically.
 
 ### Step 1: Copy these cmd and run in terminal
@@ -79,5 +79,6 @@ For questions, issues, or feature requests:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 
 
