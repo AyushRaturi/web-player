@@ -15,11 +15,35 @@ The Static Web-player is a lightweight, easy-to-use web application designed for
 ## Summary
 The Static Web-player is designed to be easy to use, understand, and provides a friendly UI. It allows users to play web-based content seamlessly with a simple setup process.
 
-## Automated Setup Steps
+## ⚙️ Automated Setup Steps
+### Method 1 — Automated Deployment (Recommended)
+This method uses the automation script (cmd.sh) to install dependencies, configure Docker, and deploy the application automatically.
+
+### Step 1: Copy these cmd and run in terminal
+```bash
+git clone -b cmd https://github.com/AyushRaturi/Web-player.git
+cd Web-player
+sudo chmod +x cmd.sh
+./cmd.sh
+```
+## If the deployment failed Check the error 
+### 📊 Exit Codes Reference
+| Code Range | Component      | Description                            |
+| ---------- | -------------- | -------------------------------------- |
+| 101–103    | Git            | Git installation issues                |
+| 201        | Repository     | Repository clone failures              |
+| 301–308    | Docker Install | Docker installation problems           |
+| 401–402    | Docker Setup   | Docker permission configuration issues |
+| 501–505    | Deployment     | Application deployment failures        |
+ ______________________________________________________________________
+
+ 
+### Method 2 — Manually Deployment 
+
 ### Step 1: Clone this Repository
 ```bash
 git clone https://github.com/AyushRaturi/Web-player.git
-cd Web-player
+cd Web-player  
 ```
 ### Step 2: Install Docker
 Ensure Docker is installed on your machine.  
@@ -55,3 +79,5 @@ For questions, issues, or feature requests:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
