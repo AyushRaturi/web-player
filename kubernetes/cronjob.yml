@@ -1,0 +1,40 @@
+# CronJob belongs to batch API group
+apiVersion: batch/v1
+
+# Resource type (case-sensitive!)
+kind: CronJob
+
+metadata:
+  # Name of the CronJob
+  name: backup-cronjob
+  
+  # Namespace where it will run
+  namespace: music-app
+
+spec:
+  # Cron schedule format: (minute hour day month day-of-week)
+  # "*/2 * * * *" means every 2 minutes
+  schedule: "*/2 * * * *"
+
+  # Defines the Job template that will run on schedule
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: two-min-backup
+
+        spec:
+          containers:
+            - name: cronjob-container
+              # Use fixed version (best practice)
+              image: busybox:1.36
+              
+              # Shell command executed inside container
+              command:
+                - sh
+                - -c
+                - echo "Backup Started" && sleep 30
+
+          # Required for Jobs & CronJobs
+          restartPolicy: OnFailure
