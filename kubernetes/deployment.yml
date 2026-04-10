@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: music-app-deployment
+  namespace: music-app
+
+spec:
+  replicas: 2 #how many repicas should be have
+
+  selector:
+    matchLabels:
+      app: music-app
+
+  template:
+    metadata:
+      labels:
+        app: music-app
+
+    spec:
+      containers:
+        - name: music-app
+          image: ayushraturi/music-app:latest   
+          
+          ports:
+            - containerPort: 80
+
+          # Mount the PVC inside container
+          volumeMounts:
+            - name: local-pvc-data   # Must match volume name
+              mountPath: /var/www/html
+
+      # Volumes must be inside pod spec
+      volumes:
+        - name: local-pvc-data
+          persistentVolumeClaim:
+            claimName: local-pvc
+
