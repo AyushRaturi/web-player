@@ -1,0 +1,37 @@
+# Type of resource
+kind: PersistentVolume
+
+# Core API group
+apiVersion: v1
+
+metadata:
+  # Name of the PersistentVolume
+  name: local-pv
+  namespace: music-app
+  
+  # Labels for identification
+  labels:
+    app: local
+
+# Spec defines storage configuration
+spec:
+  # Storage capacity of the volume
+  capacity:
+    storage: 1Gi
+
+  # How the volume can be mounted
+  # ReadWriteOnce = mounted by one node at a time
+  accessModes:
+    - ReadWriteOnce
+
+  # What happens when PVC is deleted
+  # Retain = keep data
+  persistentVolumeReclaimPolicy: Retain
+
+  # Storage class name
+  storageClassName: local-storage
+
+  # hostPath means use local node storage
+  # Only for testing (NOT production safe)
+  hostPath:
+    path: /mnt
