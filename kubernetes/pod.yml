@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: music-app-pod
+  namespace: music-app
+
+spec:
+  containers:
+    - name: music-app
+      image: ayushraturi/music-app:latest
+      ports:
+        - containerPort: 80
