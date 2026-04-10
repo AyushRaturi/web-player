@@ -1,0 +1,47 @@
+# This defines the type of Kubernetes resource
+# Job is used to run a task to completion (like batch processing)
+kind: Job
+
+# Jobs belong to the batch API group
+# v1 is the stable version
+apiVersion: batch/v1
+
+metadata:
+  # Name of the Job resource
+  name: music-app-job
+  
+  # Namespace where the job will be created
+  namespace: music-app
+
+spec:
+  # Number of successful pod completions required
+  # 1 means job completes after 1 successful pod execution
+  completions: 1
+
+  # How many pods should run in parallel
+  # 1 means only one pod runs at a time
+  parallelism: 1
+
+  # Template defines the Pod that the Job will create
+  template:
+    metadata:
+      # Labels help in identifying/selecting this pod
+      labels:
+        name: demo-job-pod
+        app: batch-task
+
+    spec:
+      # List of containers inside the pod
+      containers:
+        - name: batch-container   # Name of the container
+          image: busybox:latest   # Lightweight Linux image
+          
+          # Command to run inside container
+          # -c allows shell command execution
+          # echo prints message
+          # sleep 30 keeps container alive for 30 seconds
+          command: ['sh', '-c', 'echo "Hello Dosto" && sleep 30']
+
+      # Important: Jobs must use Never or OnFailure
+      # Never → do not restart container
+      restartPolicy: Never
