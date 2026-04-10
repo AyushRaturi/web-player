@@ -1,0 +1,23 @@
+# Type of resource
+kind: PersistentVolumeClaim
+
+# Core API group
+apiVersion: v1
+
+metadata:
+  # Name of the PersistentVolumeClaim
+  name: local-pvc
+  namespace: music-app
+  
+# Spec defines storage configuration
+spec:
+  # How the volume can be mounted
+  # ReadWriteOnce = mounted by one node at a time
+  accessModes:
+    - ReadWriteOnce
+
+  resources: 
+    requests:
+      # Amount of storage requested
+      storage: 1Gi
+  storageClassName: local-storage
