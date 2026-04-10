@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: music-service
+  namespace: music-app   # good practice to mention namespace
+
+spec:
+  type: NodePort     # Service type defined here
+
+  selector:
+    app: music-app       # Must match pod label
+
+  ports:
+    - protocol: TCP
+      port: 80           # Service port
+      targetPort: 80     # Container port
+      nodePort: 30007    # Optional (if not given, auto-assigned)
